@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ECS API Docs</title>
+    <style>
+
+        body {
+            font-family: Sans-serif;
+            line-height: 1em;
+            background-color: #EEEEEE;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        div.indent {
+            position: relative;
+            left: 50px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div style="font-size:200%">
+        Documentation for the Elkhorn Computer Service API
+    </div>
+
+    <hr>
+    <div>
+        <h2><a href="https://ce1jwdbd23.execute-api.us-east-1.amazonaws.com/production/prod">parsePhoneNumber</a></h2>
+        <h3>Description</h3>
+        <div class="indent">
+            Extracts phone numbers enclosed in square brackets from text.
+        </div>
+        <h3>Accepts</h3>
+        <div class="indent">
+            <code>event-subject</code> : an arbitrary string describing the event that triggered the API<br/>
+            <code>event-body</code> : text containing phone numbers enclosed in square brackets<br/>
+        </div>
+        <h3>Returns</h3>
+        <div class="indent">
+            <code>phone-number-list</code> : boolean value which should be set to `true` on success<br/>
+            <code>event-subject</code> : whatever was sent as `event-subject` in the request<br/>
+            <code>phone-numbers</code> : an array contaning the phone numbers parsed from the request data<br/>
+        </div>
+        <h3>cURL Example</h3>
+        <div class="indent">
+            <b>Request</b><br/>
+            <!-- It's broken up in the HTML source code, but it has to be on one line if you actually
+                 type it into a shell prompt. Obviously. -->
+            <code>$ curl -X POST --data '{"event-subject": "Example event", "event-body":
+            "Our API is very liberal about phone numbers; observe: [402-000-0000] [(400) 111-1111] [1234567]"}'
+            https://ce1jwdbd23.execute-api.us-east-1.amazonaws.com/production/prod</code><br/><br/>
+            <b>Response</b><br/>
+            <pre><code>{
+    "phone-number-list": true,
+    "event-subject": "Example event",
+    "phone-numbers": [
+        "+14020000000",
+        "+14001111111",
+        "+14021234567"
+    ]
+}</code></pre>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <h2><a href="https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder">sendReminderSMS</a></h2>
+        <h3>Description</h3>
+        <div class="indent">
+            Sends text messages, either to a single recipient or to multiple recipients.
+        </div>
+        <h3>Accepts</h3>
+        <div class="indent">
+            <h4>Single recipient</h4>
+            <div class="indent">
+                <code>auth-api-key</code> : an authentication key consisting of "elkhorn_" followed by a string
+                                            of random alphanumeric characters<br/>
+                <code>event-text</code> : the message to send via SMS<br/>
+                <code>destination-number</code> : the phone number (as a string) to which the message is sent
+                                                  (must follow the form "+1XXXXXXXXXX")<br/>
+            </div>
+            <h4>Multiple recipients</h4>
+            <div class="indent">
+                <code>auth-api-key</code> : an authentication key consisting of "elkhorn_" followed by a string
+                                            of random alphanumeric characters<br/>
+                <code>phone-number-list</code> : boolean value that must be set to `true` to let the API know
+                                                 that we're sending a list of phone numbers, not just one<br/>
+                <code>event-subject</code> : the message to send via SMS<br/>
+                <code>phone-numbers</code> : array containing the recipient phone numbers (must follow the form
+                                             "+1XXXXXXXXXX")<br/>
+
+            </div>
+        </div>
+        <h3>Returns</h3>
+        <div class="indent">
+            <code>status</code> : 200 on success, 400 on failure<br/>
+            <code>text</code> : "Message sent!" on success, "Message ***NOT*** sent!" on failure<br/>
+            <code>message</code> : the text to be sent to the recipient in the request (on success, the recipient
+                                   receives this, followed by "\r\n\r\nReply STOP to unsubscribe.")<br/>
+            <code>data</code> : exact copy of the request data<br/>
+        </div>
+        <h3>cURL Example</h3>
+        <div class="indent">
+            <h4>Single recipient</h4>
+            <div class="indent">
+                <h4>Request</h4>
+                TODO<br/>
+                <h4>Response</h4>
+                TODO<br/>
+            </div>
+            <h4>Multiple recipients</h4>
+            <div class="indent">
+                <h4>Request</h4>
+                TODO<br/>
+                <h4>Response</h4>
+                TODO<br/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
