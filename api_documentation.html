@@ -162,5 +162,34 @@
             </div>
         </div>
     </div>
+
+    <hr>
+    <div>
+        <h2><a href="https://5itph2dwg1.execute-api.us-east-1.amazonaws.com/prod/attack-bees">removeMessageHeader</a></h2>
+        <h3>Description</h3>
+        <div class="indent">
+            Removes all characters up to and including the last instance of <code>']'</code> in a string.
+        </div>
+        <h3>Accepts</h3>
+        <div class="indent">
+            <code>message</code> : the string to trim characters from<br/>
+        </div>
+        <h3>Returns</h3>
+        <div class="indent">
+            <code>status</code> : 200 on success<br/>
+            <code>message</code> : a string with all characters up to and including <code>']'</code> removed<br/>
+        </div>
+        <h3>cURL Example</h3>
+        <div class="indent">
+            <h4>Request</h4>
+            <code>$ curl -X POST --data '{"message": "[This text will be removed] This text will remain"}'
+            https://5itph2dwg1.execute-api.us-east-1.amazonaws.com/prod/attack-bees</code><br/>
+            <h4>Response</h4>
+            <div class="inline-code-0">{
+    "status": 200,
+    "message": " This text will remain"
+}</div>
+        </div>
+    </div>
 </body>
 </html>
