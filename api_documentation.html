@@ -48,13 +48,13 @@
         </div>
         <h3>cURL Example</h3>
         <div class="indent">
-            <b>Request</b><br/>
+            <h4>Request</h4>
             <!-- It's broken up in the HTML source code, but it has to be on one line if you actually
                  type it into a shell prompt. Obviously. -->
             <code>$ curl -X POST --data '{"event-subject": "Example event", "event-body":
             "Our API is very liberal about phone numbers; observe: [402-000-0000] [(400) 111-1111] [1234567]"}'
             https://ce1jwdbd23.execute-api.us-east-1.amazonaws.com/production/prod</code><br/><br/>
-            <b>Response</b><br/>
+            <h4>Response</h4>
             <pre><code>{
     "phone-number-list": true,
     "event-subject": "Example event",
@@ -114,7 +114,16 @@
                 "+14020000000"}' https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
                 </code><br/>
                 <h4>Response</h4>
-                TODO<br/>
+                <pre><code>{
+    "status": 200,
+    "text": "Message sent!",
+    "message": "This is the message that gets sent!",
+    "data": {
+        "event-text": "This is the message that gets sent!",
+        "destination-number": "+14020000000",
+        "auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX"
+    }
+}</code></pre>
             </div>
             <h4>Multiple recipients</h4>
             <div class="indent">
