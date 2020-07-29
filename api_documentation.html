@@ -109,7 +109,10 @@
             <h4>Single recipient</h4>
             <div class="indent">
                 <h4>Request</h4>
-                <code>$ </code><br/>
+                <code>$ curl -X POST --data '{"auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX",
+                "event-text": "This is the message that gets sent!", "destination-number":
+                "+14020000000"}' https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
+                </code><br/>
                 <h4>Response</h4>
                 TODO<br/>
             </div>
