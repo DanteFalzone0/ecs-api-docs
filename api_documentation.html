@@ -128,7 +128,11 @@
             <h4>Multiple recipients</h4>
             <div class="indent">
                 <h4>Request</h4>
-                TODO<br/>
+                <code>$ curl -X POST --data '{"auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX",
+                "phone-number-list": true, "event-subject": "This message gets sent to multiple numbers!",
+                "phone-numbers": ["+14021111111", "+18006666666", "+12345678900"]}'
+                https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
+                </code><br/>
                 <h4>Response</h4>
                 TODO<br/>
             </div>
