@@ -134,7 +134,21 @@
                 https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
                 </code><br/>
                 <h4>Response</h4>
-                TODO<br/>
+                <pre><code>{
+    "status": 200,
+    "text": "Message sent!",
+    "message": "This message gets sent to multiple numbers!",
+    "data": {
+        "auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX",
+        "phone-number-list": true,
+        "event-subject": "This message gets sent to multiple numbers!",
+        "phone-numbers": [
+            "+14021111111",
+            "+18006666666",
+            "+12345678900"
+        ]
+    }
+}</code></pre>
             </div>
         </div>
     </div>
