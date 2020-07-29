@@ -20,6 +20,11 @@
             left: 50px;
         }
 
+        div.inline-code-0 {
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
     </style>
 </head>
 
@@ -55,7 +60,7 @@
             "Our API is very liberal about phone numbers; observe: [402-000-0000] [(400) 111-1111] [1234567]"}'
             https://ce1jwdbd23.execute-api.us-east-1.amazonaws.com/production/prod</code><br/><br/>
             <h4>Response</h4>
-            <pre><code>{
+            <div class="inline-code-0">{
     "phone-number-list": true,
     "event-subject": "Example event",
     "phone-numbers": [
@@ -63,7 +68,7 @@
         "+14001111111",
         "+14021234567"
     ]
-}</code></pre>
+}</div>
         </div>
     </div>
 
@@ -116,7 +121,7 @@
                 "+14020000000"}' https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
                 </code><br/>
                 <h4>Response</h4>
-                <pre><code>{
+                <div class="inline-code-0">{
     "status": 200,
     "text": "Message sent!",
     "message": "This is the message that gets sent!",
@@ -125,7 +130,7 @@
         "destination-number": "+14020000000",
         "auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX"
     }
-}</code></pre>
+}</div>
             </div>
             <h4>Multiple recipients</h4>
             <div class="indent">
@@ -136,7 +141,7 @@
                 https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
                 </code><br/>
                 <h4>Response</h4>
-                <pre><code>{
+                <div class="inline-code-0">{
     "status": 200,
     "text": "Message sent!",
     "message": "This message gets sent to multiple numbers!",
@@ -150,7 +155,7 @@
             "+12345678900"
         ]
     }
-}</code></pre>
+}</div>
             </div>
         </div>
     </div>
