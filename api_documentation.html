@@ -71,7 +71,7 @@
                  type it into a shell prompt. Obviously. -->
             <code>$ curl -X POST --data '{"event-subject": "Example event", "event-body":
             "Our API is very liberal about phone numbers; observe: [402-000-0000] [(400) 111-1111] [1234567]"}'
-            https://ce1jwdbd23.execute-api.us-east-1.amazonaws.com/production/prod</code><br/><br/>
+            https://api.ecs.rocks/v0/util/parsePhoneNumber</code><br/><br/>
             <h4>Response</h4>
             <div class="inline-code-0">{
     "phone-number-list": true,
@@ -137,7 +137,7 @@
                 <h4>Request</h4>
                 <code>$ curl -X POST --data '{"auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX",
                 "event-text": "This is the message that gets sent!", "destination-number":
-                "+14020000000"}' https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
+                "+14020000000"}' https://api.ecs.rocks/v0/sms/sendReminderSMS
                 </code><br/>
                 <h4>Response</h4>
                 <div class="inline-code-0">{
@@ -157,7 +157,7 @@
                 <code>$ curl -X POST --data '{"auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX",
                 "phone-number-list": true, "event-subject": "This message gets sent to multiple numbers!",
                 "phone-numbers": ["+14021111111", "+18006666666", "+12345678900"]}'
-                https://unbu30wa8b.execute-api.us-east-1.amazonaws.com/prod/sms-reminder
+                https://api.ecs.rocks/v0/sms/sendReminderSMS
                 </code><br/>
                 <h4>Response</h4>
                 <div class="inline-code-0">{
@@ -205,7 +205,7 @@
         <div class="indent">
             <h4>Request</h4>
             <code>$ curl -X POST --data '{"message": "[This text will be removed] This text will remain"}'
-            https://5itph2dwg1.execute-api.us-east-1.amazonaws.com/prod/attack-bees</code><br/>
+            https://api.ecs.rocks/v0/util/removeMessageHeader</code><br/>
             <h4>Response</h4>
             <div class="inline-code-0">{
     "status": 200,
