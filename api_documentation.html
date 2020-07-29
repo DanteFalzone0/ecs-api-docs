@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>ECS API Docs</title>
     <style>
@@ -18,12 +17,12 @@
             font-family: Consolas, monospace;
         }
 
-        div.indent {
+        .indent {
             position: relative;
             left: 50px;
         }
 
-        div.inline-code-0 {
+        .inline-code-0 {
             white-space: pre-wrap;
             font-family: Consolas, monospace;
         }
@@ -35,7 +34,7 @@
     <div style="font-size:200%">
         Documentation for the Elkhorn Computer Service API
     </div>
-    <br/>
+    <br>
     <strong>This document describes the usage of all the publicly visible API functions maintained
     by ECS for public and internal use. Undocumented functions may not work consistently or
     indefinitely and are only maintained for internal use. No part of this document should be
@@ -55,14 +54,14 @@
         </div>
         <h3>Accepts</h3>
         <div class="indent">
-            <code>event-subject</code> : an arbitrary string describing the event that triggered the API<br/>
-            <code>event-body</code> : text containing phone numbers enclosed in square brackets<br/>
+            <code>event-subject</code> : an arbitrary string describing the event that triggered the API<br>
+            <code>event-body</code> : text containing phone numbers enclosed in square brackets<br>
         </div>
         <h3>Returns</h3>
         <div class="indent">
-            <code>phone-number-list</code> : boolean value which should be set to `true` on success<br/>
-            <code>event-subject</code> : whatever was sent as `event-subject` in the request<br/>
-            <code>phone-numbers</code> : an array containing the phone numbers parsed from the request data<br/>
+            <code>phone-number-list</code> : boolean value which should be set to `true` on success<br>
+            <code>event-subject</code> : whatever was sent as `event-subject` in the request<br>
+            <code>phone-numbers</code> : an array containing the phone numbers parsed from the request data<br>
         </div>
         <h3>cURL Example</h3>
         <div class="indent">
@@ -71,7 +70,7 @@
                  type it into a shell prompt. Obviously. -->
             <code>$ curl -X POST --data '{"event-subject": "Example event", "event-body":
             "Our API is very liberal about phone numbers; observe: [402-000-0000] [(400) 111-1111] [1234567]"}'
-            https://api.ecs.rocks/v0/util/parsePhoneNumber</code><br/><br/>
+            https://api.ecs.rocks/v0/util/parsePhoneNumber</code><br><br>
             <h4>Response</h4>
             <div class="inline-code-0">{
     "phone-number-list": true,
@@ -105,30 +104,30 @@
             <h4>Single recipient</h4>
             <div class="indent">
                 <code>auth-api-key</code> : an authentication key consisting of "elkhorn_" followed by a string
-                                            of alphanumeric characters<br/>
-                <code>event-text</code> : the message to send via SMS<br/>
+                                            of alphanumeric characters<br>
+                <code>event-text</code> : the message to send via SMS<br>
                 <code>destination-number</code> : the phone number (as a string) to which the message is sent
-                                                  (must follow the form "+1XXXXXXXXXX")<br/>
+                                                  (must follow the form "+1XXXXXXXXXX")<br>
             </div>
             <h4>Multiple recipients</h4>
             <div class="indent">
                 <code>auth-api-key</code> : an authentication key consisting of "elkhorn_" followed by a string
-                                            of alphanumeric characters<br/>
+                                            of alphanumeric characters<br>
                 <code>phone-number-list</code> : boolean value that must be set to `true` to let the API know
-                                                 that we're sending a list of phone numbers, not just one<br/>
-                <code>event-subject</code> : the message to send via SMS<br/>
+                                                 that we're sending a list of phone numbers, not just one<br>
+                <code>event-subject</code> : the message to send via SMS<br>
                 <code>phone-numbers</code> : array containing the recipient phone numbers (must follow the form
-                                             "+1XXXXXXXXXX")<br/>
+                                             "+1XXXXXXXXXX")<br>
 
             </div>
         </div>
         <h3>Returns</h3>
         <div class="indent">
-            <code>status</code> : 200 on success, 400 on failure<br/>
-            <code>text</code> : "Message sent!" on success, "Message ***NOT*** sent!" on failure<br/>
+            <code>status</code> : 200 on success, 400 on failure<br>
+            <code>text</code> : "Message sent!" on success, "Message ***NOT*** sent!" on failure<br>
             <code>message</code> : the text to be sent to the recipient in the request (on success, the recipient
-                                   receives this, followed by "\r\n\r\nReply STOP to unsubscribe.")<br/>
-            <code>data</code> : exact copy of the request data<br/>
+                                   receives this, followed by "\r\n\r\nReply STOP to unsubscribe.")<br>
+            <code>data</code> : exact copy of the request data<br>
         </div>
         <h3>cURL Examples</h3>
         <div class="indent">
@@ -138,7 +137,7 @@
                 <code>$ curl -X POST --data '{"auth-api-key": "elkhorn_XXXXXXXXXXXXXXXXXXXX",
                 "event-text": "This is the message that gets sent!", "destination-number":
                 "+14020000000"}' https://api.ecs.rocks/v0/sms/sendReminderSMS
-                </code><br/>
+                </code><br>
                 <h4>Response</h4>
                 <div class="inline-code-0">{
     "status": 200,
@@ -158,7 +157,7 @@
                 "phone-number-list": true, "event-subject": "This message gets sent to multiple numbers!",
                 "phone-numbers": ["+14021111111", "+18006666666", "+12345678900"]}'
                 https://api.ecs.rocks/v0/sms/sendReminderSMS
-                </code><br/>
+                </code><br>
                 <h4>Response</h4>
                 <div class="inline-code-0">{
     "status": 200,
@@ -194,18 +193,18 @@
         </div>
         <h3>Accepts</h3>
         <div class="indent">
-            <code>message</code> : the string to trim characters from<br/>
+            <code>message</code> : the string to trim characters from<br>
         </div>
         <h3>Returns</h3>
         <div class="indent">
-            <code>status</code> : 200 on success<br/>
-            <code>message</code> : a string with all characters up to and including <code>']'</code> removed<br/>
+            <code>status</code> : 200 on success<br>
+            <code>message</code> : a string with all characters up to and including <code>']'</code> removed<br>
         </div>
         <h3>cURL Example</h3>
         <div class="indent">
             <h4>Request</h4>
             <code>$ curl -X POST --data '{"message": "[This text will be removed] This text will remain"}'
-            https://api.ecs.rocks/v0/util/removeMessageHeader</code><br/>
+            https://api.ecs.rocks/v0/util/removeMessageHeader</code><br>
             <h4>Response</h4>
             <div class="inline-code-0">{
     "status": 200,
@@ -213,5 +212,6 @@
 }</div>
         </div>
     </div>
-</body>
-</html>
+
+
+</body></html>
