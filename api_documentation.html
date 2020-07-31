@@ -59,14 +59,23 @@
         </div>
         <h3>Accepts</h3>
         <div class="indent">
-            <code>event-subject</code> : an arbitrary string describing the event that triggered the API<br>
-            <code>event-body</code> : text containing phone numbers enclosed in square brackets<br>
+            <code>event-subject</code> : (string) an arbitrary string describing the event that triggered the API<br>
+            <code>event-body</code> : (string) text containing phone numbers enclosed in square brackets<br>
         </div>
         <h3>Returns</h3>
         <div class="indent">
-            <code>phone-number-list</code> : boolean value which should be set to `true` on success<br>
-            <code>event-subject</code> : whatever was sent as `event-subject` in the request<br>
-            <code>phone-numbers</code> : an array containing the phone numbers parsed from the request data<br>
+            <h4>On success</h4>
+            <div class="indent">
+                <code>status</code> : (number) 200<br>
+                <code>phone-number-list</code> : (boolean) true<br>
+                <code>event-subject</code> : (string) whatever was sent as `event-subject` in the request<br>
+                <code>phone-numbers</code> : (array of string) an array containing the phone numbers parsed from the request data<br>
+            </div>
+            <h4>On failure</h4>
+            <div class="indent">
+                <code>status</code> : (number) 400<br>
+                <code>message</code> : (string) an error message explaining what's wrong<br>
+            </div>
         </div>
         <h3>cURL Example</h3>
         <div class="indent">
@@ -78,6 +87,7 @@
             https://api.ecs.rocks/v0/util/parsePhoneNumber</code><br><br>
             <h4>Response</h4>
             <div class="inline-code-0">{
+    "status": 200,
     "phone-number-list": true,
     "event-subject": "Example event",
     "phone-numbers": [
@@ -108,31 +118,39 @@
         <div class="indent">
             <h4>Single recipient</h4>
             <div class="indent">
-                <code>auth-api-key</code> : an authentication key consisting of "elkhorn_" followed by a string
+                <code>auth-api-key</code> : (string) an authentication key consisting of "elkhorn_" followed by a string
                                             of alphanumeric characters<br>
-                <code>event-text</code> : the message to send via SMS<br>
-                <code>destination-number</code> : the phone number (as a string) to which the message is sent
+                <code>event-text</code> : (string) the message to send via SMS<br>
+                <code>destination-number</code> : (string) the phone number to which the message is sent
                                                   (must follow the form "+1XXXXXXXXXX")<br>
             </div>
             <h4>Multiple recipients</h4>
             <div class="indent">
-                <code>auth-api-key</code> : an authentication key consisting of "elkhorn_" followed by a string
+                <code>auth-api-key</code> : (string) an authentication key consisting of "elkhorn_" followed by a string
                                             of alphanumeric characters<br>
-                <code>phone-number-list</code> : boolean value that must be set to `true` to let the API know
-                                                 that we're sending a list of phone numbers, not just one<br>
-                <code>event-subject</code> : the message to send via SMS<br>
-                <code>phone-numbers</code> : array containing the recipient phone numbers (must follow the form
+                <code>phone-number-list</code> : (boolean) must be `true` for the API to know we're sending to multiple recipients<br>
+                <code>event-subject</code> : (string) the message to send via SMS<br>
+                <code>phone-numbers</code> : (array of string) the recipient phone numbers (must follow the form
                                              "+1XXXXXXXXXX")<br>
 
             </div>
         </div>
         <h3>Returns</h3>
         <div class="indent">
-            <code>status</code> : 200 on success, 400 on failure<br>
-            <code>text</code> : "Message sent!" on success, "Message ***NOT*** sent!" on failure<br>
-            <code>message</code> : the text to be sent to the recipient in the request (on success, the recipient
-                                   receives this, followed by "\r\n\r\nReply STOP to unsubscribe.")<br>
-            <code>data</code> : exact copy of the request data<br>
+            <h4>On success</h4>
+            <div class="indent">
+                <code>status</code> : (number) 200<br>
+                <code>text</code> : (string) "Message sent!"<br>
+                <code>message</code> : (string) the recipient(s) receive this followed by "\r\n\r\nReply STOP to unsubscribe."<br>
+                <code>data</code> : (object) exact copy of the request data<br>
+            </div>
+            <h4>On failure</h4>
+            <div class="indent">
+                <code>status</code> : (number) 400<br>
+                <code>text</code> : (string) "Message ***NOT*** sent!"<br>
+                <code>message</code> : (string) message that the request was trying to send<br>
+                <code>data</code> : (object) exact copy of the request data<br>
+            </div>
         </div>
         <h3>cURL Examples</h3>
         <div class="indent">
@@ -198,12 +216,20 @@
         </div>
         <h3>Accepts</h3>
         <div class="indent">
-            <code>message</code> : the string to trim characters from<br>
+            <code>message</code> : (string) the string to trim characters from<br>
         </div>
         <h3>Returns</h3>
         <div class="indent">
-            <code>status</code> : 200 on success<br>
-            <code>message</code> : a string with all characters up to and including <code>']'</code> removed<br>
+            <h4>On success</h4>
+            <div class="indent">
+                <code>status</code> : (number) 200<br>
+                <code>message</code> : (string) <code>message</code> with all characters up to and including <code>']'</code> removed<br>
+            </div>
+            <h4>On failure</h4>
+            <div class="indent">
+                <code>status</code> : (number) 400<br>
+                <code>message</code> : (string) error message describing what went wrong<br>
+            </div>
         </div>
         <h3>cURL Example</h3>
         <div class="indent">
